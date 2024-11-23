@@ -78,6 +78,9 @@ public:
     NimBLEConnInfo         getPeerInfo(size_t index);
     NimBLEConnInfo         getPeerInfo(const NimBLEAddress& address);
     NimBLEConnInfo         getPeerIDInfo(uint16_t id);
+    
+    int                    getRssi(uint16_t handle);
+    
     std::string            getPeerName(const NimBLEConnInfo& connInfo);
     void                   getPeerNameOnConnect(bool enable);
 #if !CONFIG_BT_NIMBLE_EXT_ADV || defined(_DOXYGEN_)

@@ -61,6 +61,7 @@ static const struct ble_gatt_svc_def ble_svc_gatt_defs[] = {
         .type = BLE_GATT_SVC_TYPE_PRIMARY,
         .uuid = BLE_UUID16_DECLARE(BLE_GATT_SVC_UUID16),
         .characteristics = (struct ble_gatt_chr_def[]) { {
+/*
             .uuid = BLE_UUID16_DECLARE(BLE_SVC_GATT_CHR_SERVICE_CHANGED_UUID16),
             .access_cb = ble_svc_gatt_access,
             .val_handle = &ble_svc_gatt_changed_val_handle,
@@ -88,6 +89,7 @@ static const struct ble_gatt_svc_def ble_svc_gatt_defs[] = {
         },
 #endif
         {
+*/
             0, /* No more characteristics in this service. */
         } },
     },

@@ -358,6 +358,28 @@ NimBLEConnInfo NimBLEServer::getPeerIDInfo(uint16_t id) {
 } // getPeerIDInfo
 
 /**
+ * @brief Ask the BLE server for the RSSI value.
+ * @return The RSSI value.
+ */
+int NimBLEServer::getRssi(uint16_t handle) {
+    NIMBLE_LOGD(LOG_TAG, ">> getRssi()");
+    if (handle == 0xffff) {
+        NIMBLE_LOGE(LOG_TAG, "<< getRssi(): Not connected");
+        return 0;
+    }
+
+    int8_t rssiValue = 0;
+    int rc = ble_gap_conn_rssi(handle, &rssiValue);
+    if(rc != 0) {
+        NIMBLE_LOGE(LOG_TAG, "Failed to read RSSI error code: %d, %s",
+                                rc, NimBLEUtils::returnCodeToString(rc));
+        return 0;
+    }
+
+    return rssiValue;
+} // getRssi
+
+/**
  * @brief Callback that is called after reading from the peer name characteristic.
  * @details This will check the task pointer in the task data struct to determine
  * the action to take once the name has been read. If there is a task waiting then
